@@ -1,0 +1,14 @@
+body{
+    background-color: antiquewhite;
+}
+
+#container{
+
+    border: 10px black;
+    display: flex;
+    justify-content: center;
+    align-items: horizontal;
+    
+    padding: 50px;
+}
+

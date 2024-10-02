@@ -9,3 +9,7 @@ btn.addEventListener('click', handleClick);
 function returnhandleClick(){
     console.log('Hello');
 }
+
+
+location.reload();
+console.log('successful');

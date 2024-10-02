@@ -1,5 +1,6 @@
 let humanScore=0;
 let computerScore=0;
+let gameOver = false;
 
 function getComputerChoice(){
      let computerChoice = Math.random();
@@ -14,24 +15,7 @@ function getComputerChoice(){
      }
 }
 
-/*
-function getHumanChoice(buttonId){
-    return buttonId;
-}
-    */
-
 function playRound(human,computer){
-    
-    if(humanScore===5 || computerScore===5){
-        
-        const result = document.querySelector('#output');
-        
-        result.textContent=`Final result: Human ${humanScore} and Computer ${computerScore}`;
-        alert( `Human ${humanScore} and Computer ${computerScore}`);
-        humanScore=0;
-        computerScore=0;
-
-    }
 
     if(computer=='rock' && human=='scissor'){
          computerScore+=1;
@@ -56,20 +40,39 @@ function playRound(human,computer){
          humanScore+=1;
         
     }
-}
 
-/*
-function checkGameOver(humanScore, computerScore){
-    if(humanScore===5 || computerScore===5){
-        return 'Game Over';
+
+    if (!gameOver){
+     const eachRoundResult = document.querySelector('#eachGame');
+     const answer = document.createElement("p");
+     answer.classList.add("answer");
+     answer.textContent = `${human}   ............      ${computer}`;
+     eachRoundResult.appendChild(answer);
     }
-}
-*/
 
-//console.log(playRound());
+     if(humanScore===5 || computerScore===5){
+        
+          const result = document.querySelector('#output');
+          result.textContent=`🪨✂️📜 Final result: Human ${humanScore} and Computer ${computerScore}`;
+          
+          humanScore=0;
+          computerScore=0;
+          gameOver=true;
+          //return 'Game Over';
+
+          const replay = document.querySelector("#container");
+          const insertReplayButton = document.createElement('button');
+          insertReplayButton.classList.add('replay');
+
+          insertReplayButton.textContent = "Play again?";
+          insertReplayButton.style.width = '100px';
+          insertReplayButton.style.height = '20px';
+
+          replay.appendChild(insertReplayButton);
+
+          insertReplayButton.addEventListener('click', () => location.reload());
+     }
+}
 
 const buttons = document.querySelectorAll('button');
-const output = document.querySelector('p');
-
-
 buttons.forEach((button) => {button.addEventListener('click', () => {playRound(getComputerChoice(), button.id)}); })
