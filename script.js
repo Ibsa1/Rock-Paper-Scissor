@@ -66,7 +66,7 @@ function playRound(human,computer){
 
           insertReplayButton.textContent = "Play again?";
           insertReplayButton.style.width = '100px';
-          insertReplayButton.style.height = '20px';
+          insertReplayButton.style.height = '40px';
 
           replay.appendChild(insertReplayButton);
 
